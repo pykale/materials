@@ -45,8 +45,8 @@ jobs:
           MKL_NUM_THREADS: 1
           NUMEXPR_NUM_THREADS: 1
 
-      - name: Report coverage
-        uses: codecov/codecov-action@v4
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
+          slug: pykale/materials
