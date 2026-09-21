@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+
+# Editors
+.vscode/
+.idea/
+.codex
+
+# Local datasets
+examples/*/data/
+
+# Run outputs
+results/
+outputs/
+plots/
+models/
+temp/
