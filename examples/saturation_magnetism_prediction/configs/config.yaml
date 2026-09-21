@@ -7,7 +7,7 @@ defaults:
 target_column: saturation magnetization
 formula_column: chemical formula
 model_random_state: 0
-compare_models: null    # e.g. [rf, xgb]; both must be in `models`
+compare_models: null
 
 output_dir: results/${dataset}_${evaluation_mode}
 model_dir: models

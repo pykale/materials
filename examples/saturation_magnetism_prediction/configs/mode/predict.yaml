@@ -5,4 +5,4 @@ evaluation_mode: predict
 predict:
   retrain: false
   formulas: [Fe3Co, Fe2Ni, FeCoNi, Fe16N2, Nd2Fe14B]
-  # input_path: data/candidates.csv  # Overrides formulas; CSV needs the formula column.
+  # input_path: data/candidates.csv  # Overrides formulas. This CSV file needs a formula column.
