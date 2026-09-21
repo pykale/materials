@@ -47,6 +47,7 @@ def test_mixing_enthalpy(periodic_table, miedema):
 
 
 def test_annotated_property_columns(periodic_table):
+    periodic_table["melting_point"] = periodic_table["melting_point"].astype(object)
     periodic_table.loc["Nd", "melting_point"] = "912±3 K (639±3 °C)"
     periodic_table.loc["Nd", "electronegativity"] = "Pauling scale: no data"
     stoich = get_stoich_array(formulas("NdFe", "FeNi"), periodic_table)

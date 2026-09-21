@@ -84,7 +84,7 @@ def get_weighted_mixing_enthalpy(miedema, stoich_array):
     present = fractions.notna()
     covered = fractions.columns.isin(miedema.index)
     weights = fractions.fillna(0.0).to_numpy()
-    enthalpy = miedema.reindex(index=fractions.columns, columns=fractions.columns).fillna(0.0).to_numpy()
+    enthalpy = miedema.reindex(index=fractions.columns, columns=fractions.columns).fillna(0.0).to_numpy(copy=True)
     np.fill_diagonal(enthalpy, 0.0)
     values = 2.0 * np.einsum("ia,ab,ib->i", weights, enthalpy, weights)  # ordered pairs, so 2 rather than 4
     n_present = present.sum(axis=1)
