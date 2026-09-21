@@ -1,0 +1,10 @@
+# @package _global_
+
+evaluation_mode: random_split
+
+models: [rf, xgb, ridge]
+
+interpret:
+  enabled: true
+  explain_models: [rf]
+  case_study_models: [rf, xgb, ridge]

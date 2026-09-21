@@ -1,0 +1,12 @@
+# @package _global_
+
+evaluation_mode: uncertainty
+
+kfold:
+  folds: 10
+ood:
+  scenarios: [element, period, group, system, cluster, sparsex, sparsey]
+  systems: [Fe-Co, Fe-Al, Fe-Cr]
+uncertainty:
+  model: rf
+  seeds: [0, 1, 2, 3, 4]

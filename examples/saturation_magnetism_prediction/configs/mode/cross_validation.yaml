@@ -1,0 +1,14 @@
+# @package _global_
+
+evaluation_mode: cross_validation
+
+models: [linear, ridge, lasso, elasticnet, rf, xgb, svr, mlp]
+
+kfold:
+  folds: 10
+  seeds: [0, 5, 10, 15, 20]
+tuning:
+  enabled: true
+
+visualize:
+  enabled: true

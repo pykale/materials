@@ -1,0 +1,26 @@
+defaults:
+  - schema
+  - _self_
+  - dataset: novamag
+  - mode: cross_validation
+
+target_column: saturation magnetization
+formula_column: chemical formula
+model_random_state: 0
+compare_models: null    # e.g. [rf, xgb]; both must be in `models`
+
+output_dir: results/${dataset}_${evaluation_mode}
+model_dir: models
+predict:
+  model_path: ${model_dir}/${dataset}_cross_validation.joblib
+
+feature_columns:
+  - n_elements
+  - mixing_entropy
+  - mean_atomic_weight
+  - mean_period
+  - mean_group
+  - mean_melting_point
+  - mixing_enthalpy
+  - mean_valence
+  - mean_electronegativity

@@ -1,0 +1,12 @@
+# @package _global_
+
+evaluation_mode: ood
+
+models: [ridge, rf, xgb, svr, mlp]
+
+kfold:
+  folds: 5
+ood:
+  scenarios: [element, period, group, system, cluster, sparsex, sparsey]
+  systems: [Fe-Co, Fe-Al, Fe-Cr]
+  seeds: [0, 1]

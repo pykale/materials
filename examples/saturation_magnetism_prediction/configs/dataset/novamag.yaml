@@ -1,0 +1,3 @@
+# @package _global_
+dataset: novamag
+dataset_path: data/novamag-magnetism.csv

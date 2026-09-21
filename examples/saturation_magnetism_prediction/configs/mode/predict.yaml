@@ -1,0 +1,8 @@
+# @package _global_
+
+evaluation_mode: predict
+
+predict:
+  retrain: false
+  formulas: [Fe3Co, Fe2Ni, FeCoNi, Fe16N2, Nd2Fe14B]
+  # input_path: data/candidates.csv  # Overrides formulas; CSV needs the formula column.
