@@ -200,6 +200,7 @@ def build_random_forest(
     min_samples_leaf: int = 2,
     max_features: Union[str, float] = "sqrt",
     random_state: int = 0,
+    n_jobs: int = 1,
 ) -> RandomForestRegressor:
     """Construct a random forest regressor."""
     return RandomForestRegressor(
@@ -209,6 +210,7 @@ def build_random_forest(
         min_samples_leaf=min_samples_leaf,
         max_features=max_features,
         random_state=random_state,
+        n_jobs=n_jobs,
     )
 
 
@@ -259,6 +261,7 @@ def build_xgboost(
     reg_alpha: float = 0,
     reg_lambda: float = 1.0,
     random_state: int = 0,
+    n_jobs: int = 1,
 ) -> xgboost.XGBRegressor:
     """Construct an XGBoost regressor."""
     return xgboost.XGBRegressor(
@@ -272,6 +275,7 @@ def build_xgboost(
         reg_alpha=reg_alpha,
         reg_lambda=reg_lambda,
         random_state=random_state,
+        n_jobs=n_jobs,
         verbosity=0,
     )
 

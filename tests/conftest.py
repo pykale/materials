@@ -1,19 +1,16 @@
 """Shared reference tables, regression data and lightweight model fixtures."""
 
-import os
 import sys
 from pathlib import Path
 
-os.environ.setdefault("OMP_NUM_THREADS", "1")  # Limit XGBoost and BLAS thread contention.
+import matplotlib
+import numpy as np
+import pandas as pd
+import pytest
+from sklearn.ensemble import RandomForestRegressor
 
-import matplotlib  # noqa: E402
-import numpy as np  # noqa: E402
-import pandas as pd  # noqa: E402
-import pytest  # noqa: E402
-from sklearn.ensemble import RandomForestRegressor  # noqa: E402
-
-from kalematerials.predict.sklearn_models import MODEL_REGISTRY  # noqa: E402
-from kalematerials.utils.registry import ModelSpec  # noqa: E402
+from kalematerials.predict.sklearn_models import MODEL_REGISTRY
+from kalematerials.utils.registry import ModelSpec
 
 matplotlib.use("Agg")
 
