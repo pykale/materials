@@ -24,13 +24,15 @@ pip install -e ".[dev]"   # plus examples and development tools
 
 ## Quick start
 
-The example requires local raw data. Place the [Novamag](https://zenodo.org/records/3241267) JSON files under `examples/saturation_magnetism_prediction/data/novamag/Novamag_Data_Files/`, then build features and evaluate the models:
+The example requires local raw data. Place the [Novamag](https://zenodo.org/records/3241267) JSON files under `examples/saturation_magnetism_prediction/data/novamag/Novamag_Data_Files/`, then build the dataset and evaluate the models:
 
 ```bash
 cd examples/saturation_magnetism_prediction
-python build_feature_tables.py --dataset novamag
+python build_dataset.py --dataset novamag
 python main.py dataset=novamag mode=cross_validation
 ```
+
+`build_dataset.py` writes the feature table and saves its target-distribution figures; pass `--no-plots` to skip them.
 
 Choose a dataset and evaluation mode:
 

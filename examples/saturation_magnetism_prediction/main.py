@@ -6,16 +6,13 @@
 `dataset` and `mode` select config files; other arguments override individual settings.
 """
 
-import os
 from typing import cast
 
-# Configure headless plotting before SHAP imports cv2 to avoid Qt plugin conflicts in subprocesses.
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-import matplotlib  # noqa: E402
+import matplotlib
 
 matplotlib.use("Agg")
 
-import hydra  # noqa: E402
+import hydra
 import runner
 from config import RunConfig, validate
 from omegaconf import DictConfig, OmegaConf
@@ -41,9 +38,6 @@ def main(composed: DictConfig) -> None:
         runner.run_uncertainty(cfg=cfg, registry=MODEL_REGISTRY)
     else:
         runner.run_random_split(cfg=cfg, registry=MODEL_REGISTRY)
-
-    if cfg.visualize.enabled:
-        runner.run_data_visualization(cfg=cfg)
 
 
 if __name__ == "__main__":

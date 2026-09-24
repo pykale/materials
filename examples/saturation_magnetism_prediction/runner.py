@@ -4,7 +4,6 @@ import warnings
 from pathlib import Path
 from typing import Mapping, Optional, Sequence, Tuple
 
-import numpy as np
 import pandas as pd
 from case_study_references import CASE_STUDIES
 from config import RunConfig
@@ -12,11 +11,6 @@ from config import RunConfig
 from kalematerials.evaluate.metrics import best_model, results_to_scores, wide_table_to_results
 from kalematerials.evaluate.ood_summaries import summarize_generalization_gap, summarize_model_comparison
 from kalematerials.interpret.alloy_series import build_series_panels
-from kalematerials.interpret.dataset_distributions import (
-    count_compounds_by_radix,
-    plot_target_distribution_by_element,
-    plot_target_violin_by_element,
-)
 from kalematerials.interpret.model_explanations import plot_model_explanations
 from kalematerials.interpret.reference_comparison import plot_predictions_against_measurements
 from kalematerials.loaddata.element_tables import load_element_properties, load_periodic_table
@@ -36,17 +30,12 @@ from kalematerials.utils.registry import ModelSpec, resolve_models, resolve_trai
 from kalematerials.utils.reporting import (
     format_comparisons,
     Logger,
-    print_compound_counts,
     print_ood_tables,
     print_predictions,
     print_summary,
     print_uncertainty_report,
     SILENT,
 )
-
-# Element subsets and histogram bin edges in tesla.
-DISTRIBUTION_ELEMENTS = ("Fe", "Co", "Cr", "Mn")
-DISTRIBUTION_BINS = np.arange(0.0, 2.6, 0.2)
 
 
 def _load_features(cfg: RunConfig) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame]:
@@ -300,34 +289,6 @@ def run_predict(*, cfg: RunConfig, registry: Mapping[str, ModelSpec]) -> pd.Data
         print(f"\nSaved predictions to: {(directory / 'predictions.csv').resolve()}")
 
     return predictions
-
-
-def run_data_visualization(*, cfg: RunConfig) -> None:
-    """Save the target-distribution figures and print the compound counts."""
-    plots_dir = Path(cfg.plots_dir)
-    plots_dir.mkdir(parents=True, exist_ok=True)
-
-    _, y, metadata = _load_features(cfg)
-    data = metadata.assign(**{cfg.target_column: y})
-
-    plot_target_distribution_by_element(
-        data,
-        target_column=cfg.target_column,
-        elements=DISTRIBUTION_ELEMENTS,
-        formula_column=cfg.formula_column,
-        bins=DISTRIBUTION_BINS,
-        save_path=plots_dir / f"{cfg.file_prefix}_ms_distribution_by_tm.png",
-    )
-    plot_target_violin_by_element(
-        data,
-        target_column=cfg.target_column,
-        elements=DISTRIBUTION_ELEMENTS,
-        formula_column=cfg.formula_column,
-        target_label="Saturation Magnetization (T)",
-        title=f"{cfg.file_prefix.upper()} Violin Plot",
-        save_path=plots_dir / f"{cfg.file_prefix}_violin_ms_by_tm.png",
-    )
-    print_compound_counts(count_compounds_by_radix(data, formula_column=cfg.formula_column))
 
 
 def _ood_scenarios(cfg: RunConfig, X, y, metadata):

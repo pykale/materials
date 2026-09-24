@@ -9,6 +9,3 @@ kfold:
   seeds: [0, 5, 10, 15, 20]
 tuning:
   enabled: true
-
-visualize:
-  enabled: true

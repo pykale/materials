@@ -37,13 +37,6 @@ class TuningConfig:
 
 
 @dataclass
-class VisualizeConfig:
-    """Target-distribution figures."""
-
-    enabled: bool = False
-
-
-@dataclass
 class InterpretConfig:
     """Model-explanation and case-study figures (random_split mode)."""
 
@@ -136,7 +129,6 @@ class RunConfig:
     kfold: KFoldConfig = field(default_factory=KFoldConfig)
     random_split: RandomSplitConfig = field(default_factory=RandomSplitConfig)
     tuning: TuningConfig = field(default_factory=TuningConfig)
-    visualize: VisualizeConfig = field(default_factory=VisualizeConfig)
     interpret: InterpretConfig = field(default_factory=InterpretConfig)
     ood: OODConfig = field(default_factory=OODConfig)
     uncertainty: UncertaintyConfig = field(default_factory=UncertaintyConfig)
